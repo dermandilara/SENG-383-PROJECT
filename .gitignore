@@ -1,0 +1,6 @@
+node_modules/
+coverage/
+dist/
+backend/data/
+.env
+.DS_Store
