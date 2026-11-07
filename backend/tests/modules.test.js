@@ -66,3 +66,19 @@ test('FR-M2 and FR-M4 unrelated parent cannot add links or tasks', async () => {
   expect((await request(app).post('/api/children/1/specialists').set('Authorization',other).send({email:'specialist@example.test',type:'teacher'})).status).toBe(403);
   expect((await request(app).post('/api/children/1/tasks').set('Authorization',other).send({title:'No',description:'',area:'Learning',dueDate:'2026-11-12'})).status).toBe(403);
 });
+
+test('FR-M3-02 week filter excludes events outside selected week', async () => {
+  const parent=await bearer('parent');
+  const first=await request(app).post('/api/children/1/events').set('Authorization',parent).send({
+    title:'Week one',startsAt:'2026-11-10T08:00:00.000Z',endsAt:'2026-11-10T09:00:00.000Z'
+  });
+  const second=await request(app).post('/api/children/1/events').set('Authorization',parent).send({
+    title:'Week two',startsAt:'2026-11-17T08:00:00.000Z',endsAt:'2026-11-17T09:00:00.000Z'
+  });
+  expect(first.status).toBe(201);
+  expect(second.status).toBe(201);
+  const weekOne=await request(app).get('/api/children/1/events?week=2026-11-09').set('Authorization',parent);
+  expect(weekOne.body.map(e=>e.title)).toEqual(['Week one']);
+  const weekTwo=await request(app).get('/api/children/1/events?week=2026-11-16').set('Authorization',parent);
+  expect(weekTwo.body.map(e=>e.title)).toEqual(['Week two']);
+});

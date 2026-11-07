@@ -72,7 +72,7 @@ function App() {
         <button onClick={() => setSession(null)}>Log out</button>
       </>}
     </section>
-    <section>
+    {!session && <section>
       <h2>v0.0 demo tasks (synthetic data only)</h2>
       <p>This public technical demo is separate from the protected M4 module.</p>
       <form onSubmit={addTask}>
@@ -81,7 +81,7 @@ function App() {
       </form>
       {error && <p role="alert">{error}</p>}
       <ul>{tasks.map(t => <li key={t.id}>{t.title}</li>)}</ul>
-    </section>
+    </section>}
   </main>;
 }
 createRoot(document.getElementById('root')).render(<React.StrictMode><App /></React.StrictMode>);
