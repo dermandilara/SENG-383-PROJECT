@@ -63,7 +63,7 @@ The Jira board has one sprint per academic week, which is more detailed than the
 
 | Epic | Planned for this point | Status (as checked on 2026-11-07) |
 |---|---|---|
-| PMP-1 | Project/team/Jira setup and v0.0 skeleton | Subtasks SCRUM-20, 21, 22 Done; epic status to reconcile |
+| PMP-1 | Project/team/Jira setup and v0.0 skeleton | SCRUM-20, 21, 22 and parent epic SCRUM-5 Done |
 | PMP-2 | Sprint plan, SRS/SDD and CI | Sprint plan, SRS/SDD and basic CI merged; epic owner assignments updated in Jira |
 | M1 | Login, JWT and role-aware UI by v0.1 | Initial implementation and automated tests merged into main; Week 8 acceptance pending |
 | M2 | Parent links/unlinks specialist; API enforces revocation | Initial API/UI and revocation tests merged into main; Week 8 acceptance pending |
@@ -75,6 +75,10 @@ The Jira board has one sprint per academic week, which is more detailed than the
 - v0.0 walking skeleton released: https://github.com/dermandilara/SENG-383-PROJECT/releases/tag/v0.0
 - PR #1: React/Express/SQLite and initial docs, reviewed and merged.
 - PR #2: Playwright browser-to-database test, reviewed and merged.
+- PR #3: Complete SRS, SDD and Week 7 PMP-3 draft, reviewed and merged.
+- PR #4: M1 login and role checks, merged with backend/frontend and browser CI passing.
+- PR #5: M2–M4 API, UI and integration/E2E tests, reviewed and merged.
+- PR #6: Final Week 7 week-filter regression test and document corrections, reviewed and merged. Three CI jobs passed.
 - Jira holds the 14 required epics and assigned sprint tasks.
 - The v0.0 `demo_tasks` is **not** the required authenticated M4 module. Current `main` now also includes distinct protected M1–M4 functionality, but has **not** been released as `v0.1`.
 
@@ -82,7 +86,7 @@ The Jira board has one sprint per academic week, which is more detailed than the
 
 **Updated course instruction:** The originally planned external SENG 440 collaboration and its meeting-note requirement were cancelled. No external test-team meeting evidence is expected. The team's normal sprint reviews, GitHub code reviews, Jira updates and automated test evidence are still required.
 
-**Week 8/9 completion reminder:** Update this table with the true M1–M4 status and include the actual Jira screenshot. Keep PMP-3 epic open until the mid-term review is genuinely complete.
+**Week 7 hand-in status:** PMP-3 initial progress review is complete in writing; GitHub PR #3 merged. The detailed **mid-term evidence screenshot** remains explicitly scheduled for the Week 8/9 checkpoint in the workflow guide, so it is not represented as already captured. Update the table and attach the real screenshot then. The team should follow the newer course cancellation of external test meetings.
 
 ## PMP-4. Progress Review: v0.2
 
