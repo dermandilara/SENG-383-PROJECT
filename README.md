@@ -5,7 +5,7 @@ Team Hexagon: Samet Coşkun, Derman Dilara Arslan, Emre Güven.
 ## Status and releases
 
 - **v0.0:** React/Vite → Express → SQLite walking skeleton using only synthetic demo tasks. Git tag: `v0.0`.
-- **In progress for v0.1:** M1 login/JWT/role-aware UI; M2–M4 APIs and simple role-aware screens are being built in the Week 7 sprint. This branch is still a v0.1 candidate requiring review and tests.
+- **Week 7 implementation merged to main:** M1 login/JWT/role-aware UI and initial M2–M4 authorized API/screens. These are a **v0.1 candidate**, not a published `v0.1` release; the Week 8 checkpoint/acceptance review is still pending.
 - **Planned v0.2:** M5–M8.
 
 ## Requirements
@@ -62,7 +62,7 @@ After `npm run seed`, all these fictional accounts use password `DemoPass123!`:
 - `GET/POST /api/children/:childId/events`: M3 weekly events
 - `GET/POST /api/children/:childId/tasks`, `PATCH /api/tasks/:taskId/done`: M4 tasks
 
-M2 specialist link/unlink, M3 weekly events and M4 task assignment/completion have initial working endpoints and basic role-aware screens in the Week 7 development branch. They are **not released until reviewed and merged**. M5–M8 remain unimplemented.
+M2 specialist link/unlink, M3 weekly events and M4 task assignment/completion have initial working endpoints and basic role-aware screens and were reviewed and merged in the Week 7 implementation PR. They still require Week 8 release acceptance. M5–M8 remain unimplemented.
 
 ## Tests
 
