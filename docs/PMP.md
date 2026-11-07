@@ -16,7 +16,7 @@
 | Derman Dilara Arslan | Jira: Derman Dilara Arslan / GitHub: dermandilara | Developer (frontend, documentation) |
 | Emre Güven | Jira: Emre Güven / GitHub: to be verified with Emre | Developer (backend, testing, CI) |
 
-The three developer roles summarize current Jira task assignments. **Course update:** the originally planned SENG 440 external test-team collaboration has been cancelled, as confirmed by the student team. Regular code review and automated testing remain in scope.
+The three developer roles summarize current Jira task assignments. **Course update:** the originally planned external test-team collaboration has been cancelled, as confirmed by the student team. Regular code review and automated testing remain in scope.
 
 ## PMP-2. Plan
 
@@ -84,7 +84,7 @@ The Jira board has one sprint per academic week, which is more detailed than the
 
 **Changes to the plan:** Detailed SRS and SDD were added before the first full M1–M4 implementation. The original plan was accelerated to get an initial M1–M4 candidate into `main` before Week 8. Next, the developers must verify the critical flows through automated tests and review, then tag `v0.1` only after acceptance.
 
-**Updated course instruction:** The originally planned external SENG 440 collaboration and its meeting-note requirement were cancelled. No external test-team meeting evidence is expected. The team's normal sprint reviews, GitHub code reviews, Jira updates and automated test evidence are still required.
+**Updated course instruction:** The originally planned external external test-team collaboration and its meeting-note requirement were cancelled. No external test-team meeting evidence is expected. The team's normal sprint reviews, GitHub code reviews, Jira updates and automated test evidence are still required.
 
 **Week 7 hand-in status:** PMP-3 initial progress review is complete in writing; GitHub PR #3 merged. The detailed **mid-term evidence screenshot** remains explicitly scheduled for the Week 8/9 checkpoint in the workflow guide, so it is not represented as already captured. Update the table and attach the real screenshot then. The team should follow the newer course cancellation of external test meetings.
 
