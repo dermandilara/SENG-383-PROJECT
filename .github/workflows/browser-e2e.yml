@@ -2,13 +2,13 @@ name: Week 5 Browser E2E
 
 on:
   push:
-    branches: [main, SCRUM-22-browser-e2e]
+    branches: [main, SCRUM-22-browser-e2e, SCRUM-34-week7-m2-m4]
   pull_request:
     branches: [main]
 
 jobs:
   browser-e2e:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -17,6 +17,9 @@ jobs:
       - name: Install backend dependencies
         working-directory: backend
         run: npm install
+      - name: Seed synthetic test data
+        working-directory: backend
+        run: npm run seed
       - name: Install frontend dependencies
         working-directory: frontend
         run: npm install

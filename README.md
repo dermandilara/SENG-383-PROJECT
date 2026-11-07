@@ -1,19 +1,22 @@
 # SENG 383 – AI-Assisted Child Development Platform
 
-Team: Hexagon (Samet Coşkun, Derman Dilara Arslan, Emre Güven).
+Team Hexagon: Samet Coşkun, Derman Dilara Arslan, Emre Güven.
 
-## Week 5: walking skeleton v0.0
+## Status and releases
 
-This is a small end-to-end demonstration using React/Vite, Express and SQLite. It shows that a browser can create a **synthetic demo task** through an API and store it in a database. It is **not** the completed M4 task module or a real child-data application.
+- **v0.0:** React/Vite → Express → SQLite walking skeleton using only synthetic demo tasks. Git tag: `v0.0`.
+- **In progress for v0.1:** M1 login/JWT/role-aware UI; M2–M4 APIs and simple role-aware screens are being built in the Week 7 sprint. This branch is still a v0.1 candidate requiring review and tests.
+- **Planned v0.2:** M5–M8.
 
-### Requirements
-- Node.js 20 or newer
-- npm
+## Requirements
 
-### Run locally
-Open two terminal windows from the project root.
+Node.js 20+ and npm. No Docker or cloud deployment.
 
-**Terminal 1 – backend**
+## Run locally
+
+Open two terminal windows from this project root.
+
+**Terminal 1 — backend**
 
 ```bash
 cd backend
@@ -22,9 +25,9 @@ npm run seed
 npm start
 ```
 
-Backend runs at http://localhost:3001. Visit http://localhost:3001/api/health for a JSON health check.
+The API runs at http://localhost:3001. Open http://localhost:3001/api/health for a JSON health response.
 
-**Terminal 2 – frontend**
+**Terminal 2 — frontend**
 
 ```bash
 cd frontend
@@ -32,25 +35,58 @@ npm install
 npm run dev
 ```
 
-Visit http://localhost:5173, add a demo task, and refresh to check that SQLite kept the data.
+Open http://localhost:5173. Try the login page or add a synthetic demo task and refresh to verify SQLite persistence.
 
-### Tests
+### Synthetic M1 accounts (local learning only)
+
+After `npm run seed`, all these fictional accounts use password `DemoPass123!`:
+
+| Email | Role | Purpose |
+|---|---|---|
+| parent@example.test | parent | Owns Example Child |
+| specialist@example.test | specialist | Linked to Example Child |
+| child@example.test | child | Example Child's account |
+| unlinked@example.test | specialist | Deliberately not linked; used for authorization tests |
+
+**Do not enter real children's personal information.** These demo credentials are not for public deployment. For non-local environments, configure a strong `JWT_SECRET`; the fallback is for local study only.
+
+## API endpoints
+
+- `GET /api/health`: health response
+- `GET /api/demo-tasks`, `POST /api/demo-tasks`: public v0.0 synthetic demo only
+- `POST /api/auth/login`: JWT on valid seeded email/password
+- `GET /api/auth/me`: authenticated account
+- `GET /api/children/:childId`: child access authorization example; 403 if not owned/linked/own account
+- `GET /api/children`: list only children available to the logged-in role
+- `GET/POST/DELETE /api/children/:childId/specialists`: M2 parent link management
+- `GET/POST /api/children/:childId/events`: M3 weekly events
+- `GET/POST /api/children/:childId/tasks`, `PATCH /api/tasks/:taskId/done`: M4 tasks
+
+M2 specialist link/unlink, M3 weekly events and M4 task assignment/completion have initial working endpoints and basic role-aware screens in the Week 7 development branch. They are **not released until reviewed and merged**. M5–M8 remain unimplemented.
+
+## Tests
 
 ```bash
 cd backend && npm test
 cd ../frontend && npm test && npm run build
 ```
 
-GitHub Actions runs the same checks in `.github/workflows/week5-ci.yml`.
+```bash
+# From the project root, use the installed Playwright test runner
+npm install --no-save @playwright/test@1.58.2
+npx playwright install chromium
+npx playwright test
+```
 
-### Documents and planning
-- `docs/PMP.md` — planning and status; Jira source of truth
-- `docs/SRS.md` — Week 6 SRS starting outline
-- `docs/SDD.md` — Week 6 design starting outline
+GitHub Actions workflows are in `.github/workflows/`. The Playwright E2E workflow seeds synthetic accounts automatically. All test and PR changes should be reviewed before merge.
+
+## Documents and Jira
+
+- `docs/SRS.md`: M1–M8 requirements and three critical acceptance flows
+- `docs/SDD.md`: architecture, ER/data model and matching sequence diagrams
+- `docs/PMP.md`: Jira sprint plan and progress reviews
 - Jira: https://hexagon-seng383.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog
 
-### Important
-Use **synthetic data only**. Do not enter real children's personal or medical information. M1–M8 feature delivery, proper authorization, AI mock mode, and final testing belong to later releases.
+## Team Git workflow
 
-### Team Git workflow
-Use one Jira issue per branch and start commit messages with the Jira key. Request PR review before merging into main. After review and successful tests, tag the merged commit `v0.0`.
+Branch names and commit messages begin with a Jira issue key. Changes are proposed via Pull Request and reviewed by another developer before merge into `main`. Only completed, merged work is marked Done in Jira.

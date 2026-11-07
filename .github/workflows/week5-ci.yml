@@ -1,7 +1,7 @@
 name: Week 5 Node CI
 on:
   push:
-    branches: ['SCRUM-22-walking-skeleton', 'main']
+    branches: ['SCRUM-22-walking-skeleton', 'main', SCRUM-34-week7-m2-m4]
   pull_request:
     branches: ['main']
 jobs:
