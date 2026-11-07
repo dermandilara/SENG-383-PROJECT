@@ -1,7 +1,7 @@
 # Software Design Document (SDD)
 
 **Team name:** Hexagon  
-**Version:** First detailed version (Week 6); final revision planned Week 10  
+**Version:** Week 6 submission version 1.0 (reviewed and refined through Week 10)  
 **Last updated:** 2026-11-07  
 **Project:** AI-Assisted Child Development Platform
 
