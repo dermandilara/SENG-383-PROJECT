@@ -5,7 +5,7 @@
 **Last updated:** 2026-11-07  
 **Project:** AI-Assisted Child Development Platform
 
-> Design plan for the required M1–M8 release. The currently merged v0.0 implements only a synthetic demo-task walking skeleton; the modules and API paths below are **planned design**, not claims of finished functionality.
+> Design for M1–M8. The `v0.0` tag contains the original synthetic walking skeleton. As of 2026-11-07, the `main` branch also contains initial M1–M4 code; those modules are not yet a tagged `v0.1` release. M5–M8 are still planned.
 
 ## 1. Architecture Overview
 
@@ -53,7 +53,7 @@ docs/
 e2e/            # Browser tests
 ```
 
-The folders beyond the existing v0.0 skeleton will be added as modules are implemented.
+This directory tree is the intended layered structure. The current student-sized implementation groups M2–M4 endpoints in `backend/src/modules.js` and renders their basic forms in `frontend/src/Workspace.jsx`; more separation may follow.
 
 ## 2. Module Design
 
@@ -168,11 +168,11 @@ erDiagram
 
 **Constraints:** `users.email` is unique; `specialist_links(child_id, specialist_id)` is unique. Use foreign keys and indexes on `child_id`, date/week and assignee fields. Stored document filenames are generated, never directly taken from user input. The role is restricted to `parent`, `specialist`, `child`. Seed data must be synthetic.
 
-**v0.0 note:** The present database contains only a simple `demo_tasks` table; the model above is for the M1–M8 implementation.
+**Implementation status:** The `v0.0` tag has only `demo_tasks`. Current `main` additionally contains `users`, `children`, `specialist_links`, `events` and `tasks`; the observations, documents and AI summary tables remain a design for M5–M8.
 
 ## 4. API / Interfaces
 
-Paths below are the agreed **planned API contract**. All child-specific endpoints require JWT and server-side access checks; examples are not yet implemented in v0.0.
+Paths below are the API design contract. M1–M4 endpoints have initial implementations on current `main` with JWT and child-specific access checks; M5–M8 endpoints are planned, not implemented.
 
 | Method | Endpoint | Description / authorized user | Module |
 |---|---|---|---|
@@ -196,7 +196,7 @@ Paths below are the agreed **planned API contract**. All child-specific endpoint
 | POST | /api/children/:childId/summary | Safe role-based AI summary with source IDs | M8 |
 | POST | /api/summaries/:id/feedback | Record helpful/incorrect feedback from viewer | M8 |
 
-**Already implemented in v0.0 only:** `GET /api/health`, `GET /api/demo-tasks`, `POST /api/demo-tasks`. Demo endpoints are not production-ready child/task endpoints.
+**Legacy v0.0 endpoints retained:** `GET /api/health`, `GET /api/demo-tasks`, `POST /api/demo-tasks`. They are public synthetic learning demos, separate from the new protected M1–M4 endpoints. `GET /api/children` also lists role-scoped child records.
 
 **Errors:** 400 invalid input; 401 missing/invalid JWT; 403 forbidden role or link; 404 unknown record (or masked unauthorized lookup); 409 duplicate link; 500 unexpected server error. API responses are JSON, except protected binary document downloads.
 
