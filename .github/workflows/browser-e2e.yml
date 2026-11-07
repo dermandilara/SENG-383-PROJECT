@@ -2,7 +2,7 @@ name: Week 5 Browser E2E
 
 on:
   push:
-    branches: [main, SCRUM-22-browser-e2e]
+    branches: [main, SCRUM-22-browser-e2e, SCRUM-34-week7-m2-m4]
   pull_request:
     branches: [main]
 
