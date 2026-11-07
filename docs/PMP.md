@@ -14,7 +14,7 @@
 |---|---|---|
 | Samet Coşkun | Jira: sametcoskun / GitHub: sametcoskun | Developer (backend, frontend, design) |
 | Derman Dilara Arslan | Jira: Derman Dilara Arslan / GitHub: dermandilara | Developer (frontend, documentation) |
-| Emre Güven | Jira: Emre Güven / GitHub: not verified yet | Developer (backend, testing, CI) |
+| Emre Güven | Jira: Emre Güven / GitHub: to be verified with Emre | Developer (backend, testing, CI) |
 
 The three developer roles summarize current Jira task assignments. SENG 440 testing-team members will be documented after they are confirmed; names are not invented here.
 
@@ -55,13 +55,34 @@ The Jira board has one sprint per academic week, which is more detailed than the
 
 ## PMP-3. Progress Review: Mid-term (v0.1)
 
-**Jira board screenshot:** To be added as an actual screenshot in `docs/img/` at mid-term.
+**Initial Week 7 review prepared:** 2026-11-07. **Target review after v0.1:** Week 8 / Week 9.
 
-| Epic | Planned for this point | Status |
+**Jira board screenshot:** A genuine authenticated Jira board screenshot must be saved to `docs/img/jira-midterm.png` during the Week 8/9 review. The board is at https://hexagon-seng383.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog. No screenshot is claimed or fabricated yet.
+
+### Actual progress at the start of Week 7
+
+| Epic | Planned for this point | Status (as checked on 2026-11-07) |
 |---|---|---|
-| M1–M4 | v0.1 release | Not started / update during review |
+| PMP-1 | Project/team/Jira setup and v0.0 skeleton | Subtasks SCRUM-20, 21, 22 Done; epic status to reconcile |
+| PMP-2 | Sprint plan, draft SRS/SDD and CI | SCRUM-23 and 26 Done; SRS/SDD full documents under review |
+| M1 | Login, JWT and role-aware UI by v0.1 | Not started in main |
+| M2 | Parent links/unlinks specialist; API enforces revocation | Not started in main |
+| M3 | Create and list weekly events | Not started in main |
+| M4 | Assign tasks, child completes, assigner sees status | Not started in main |
 
-**Changes to the plan (if any):** To be filled in at the review.
+### Evidence
+
+- v0.0 walking skeleton released: https://github.com/dermandilara/SENG-383-PROJECT/releases/tag/v0.0
+- PR #1: React/Express/SQLite and initial docs, reviewed and merged.
+- PR #2: Playwright browser-to-database test, reviewed and merged.
+- Jira holds the 14 required epics and assigned sprint tasks.
+- The v0.0 `demo_tasks` is **not** the required authenticated M4 module; implementation of M1–M4 is still needed by Week 8.
+
+**Changes to the plan:** Complete the detailed SRS and SDD before beginning feature work, then implement and test M1 before the three dependent M2–M4 modules. Revisit estimates if Week 8 scope is too large. Use PRs and track actual status in Jira.
+
+**SENG 440 test-team meetings:** Actual dated notes have not been provided/committed. Use `docs/meeting-notes-template.md` after each real meeting. Do not claim a meeting that did not happen.
+
+**Week 8/9 completion reminder:** Update this table with the true M1–M4 status and include the actual Jira screenshot. Keep PMP-3 epic open until the mid-term review is genuinely complete.
 
 ## PMP-4. Progress Review: v0.2
 
