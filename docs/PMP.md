@@ -16,7 +16,7 @@
 | Derman Dilara Arslan | Jira: Derman Dilara Arslan / GitHub: dermandilara | Developer (frontend, documentation) |
 | Emre Güven | Jira: Emre Güven / GitHub: to be verified with Emre | Developer (backend, testing, CI) |
 
-The three developer roles summarize current Jira task assignments. SENG 440 testing-team members will be documented after they are confirmed; names are not invented here.
+The three developer roles summarize current Jira task assignments. **Course update:** the originally planned SENG 440 external test-team collaboration has been cancelled, as confirmed by the student team. Regular code review and automated testing remain in scope.
 
 ## PMP-2. Plan
 
@@ -78,9 +78,9 @@ The Jira board has one sprint per academic week, which is more detailed than the
 - Jira holds the 14 required epics and assigned sprint tasks.
 - The v0.0 `demo_tasks` is **not** the required authenticated M4 module. Current `main` now also includes distinct protected M1–M4 functionality, but has **not** been released as `v0.1`.
 
-**Changes to the plan:** Detailed SRS and SDD were added before the first full M1–M4 implementation. The original plan was accelerated to get an initial M1–M4 candidate into `main` before Week 8. Next, the test team must review these flows and the team must tag `v0.1` only after acceptance.
+**Changes to the plan:** Detailed SRS and SDD were added before the first full M1–M4 implementation. The original plan was accelerated to get an initial M1–M4 candidate into `main` before Week 8. Next, the developers must verify the critical flows through automated tests and review, then tag `v0.1` only after acceptance.
 
-**SENG 440 test-team meetings:** Actual dated notes have not been provided/committed. Use `docs/meeting-notes-template.md` after each real meeting. Do not claim a meeting that did not happen.
+**Updated course instruction:** The originally planned external SENG 440 collaboration and its meeting-note requirement were cancelled. No external test-team meeting evidence is expected. The team's normal sprint reviews, GitHub code reviews, Jira updates and automated test evidence are still required.
 
 **Week 8/9 completion reminder:** Update this table with the true M1–M4 status and include the actual Jira screenshot. Keep PMP-3 epic open until the mid-term review is genuinely complete.
 
