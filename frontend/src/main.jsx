@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { navigationForRole } from './roleNavigation';
+import Workspace from './Workspace';
 import './style.css';
 
 function App() {
@@ -66,7 +67,8 @@ function App() {
         <h2>Welcome, {session.user.name}</h2>
         <p>Account role: <strong>{session.user.role}</strong></p>
         <nav aria-label="Role navigation"><ul>{navigationForRole(session.user.role).map(item => <li key={item}>{item}</li>)}</ul></nav>
-        <p>These screens are placeholders for M2–M8 and do not show protected child data yet.</p>
+        <Workspace session={session} />
+        <p>Observations, documents, statistics and AI summaries (M5–M8) are planned for v0.2.</p>
         <button onClick={() => setSession(null)}>Log out</button>
       </>}
     </section>

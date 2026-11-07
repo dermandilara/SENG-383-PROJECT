@@ -17,6 +17,9 @@ jobs:
       - name: Install backend dependencies
         working-directory: backend
         run: npm install
+      - name: Seed synthetic test data
+        working-directory: backend
+        run: npm run seed
       - name: Install frontend dependencies
         working-directory: frontend
         run: npm install

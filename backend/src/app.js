@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { openDatabase } = require('./db');
 const { authenticate, canAccessChild, secret } = require('./auth');
+const { registerModuleRoutes } = require('./modules');
 
 function createApp(db = openDatabase()) {
   const app = express();
@@ -48,6 +49,7 @@ function createApp(db = openDatabase()) {
     return res.json({ id: access.child.id, displayName: access.child.display_name });
   });
 
+  registerModuleRoutes(app, db);
   return app;
 }
 module.exports = { createApp };

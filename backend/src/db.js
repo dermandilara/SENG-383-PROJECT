@@ -28,6 +28,27 @@ function openDatabase(file = process.env.DB_PATH || path.join(__dirname, '..', '
       specialist_type TEXT NOT NULL,
       PRIMARY KEY(child_id, specialist_id)
     );
+    CREATE TABLE IF NOT EXISTS events (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      child_id INTEGER NOT NULL REFERENCES children(id),
+      created_by INTEGER NOT NULL REFERENCES users(id),
+      title TEXT NOT NULL,
+      starts_at TEXT NOT NULL,
+      ends_at TEXT NOT NULL
+    );
+    CREATE TABLE IF NOT EXISTS tasks (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      child_id INTEGER NOT NULL REFERENCES children(id),
+      assigned_by INTEGER NOT NULL REFERENCES users(id),
+      title TEXT NOT NULL,
+      description TEXT NOT NULL,
+      area TEXT NOT NULL,
+      due_date TEXT NOT NULL,
+      done INTEGER NOT NULL DEFAULT 0,
+      completed_at TEXT
+    );
+    CREATE INDEX IF NOT EXISTS idx_events_child_start ON events(child_id, starts_at);
+    CREATE INDEX IF NOT EXISTS idx_tasks_child_due ON tasks(child_id, due_date);
   `);
   return db;
 }

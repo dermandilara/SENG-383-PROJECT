@@ -6,3 +6,8 @@ form { display: flex; gap: 8px; flex-wrap: wrap; }
 input { flex: 1; min-width: 200px; padding: 10px; border: 1px solid #bbc6d2; border-radius: 6px; }
 button { padding: 10px 16px; background: #3568a8; color: #fff; border: 0; border-radius: 6px; cursor: pointer; }
 li { margin: 10px 0; }
+
+.subsection { margin: 18px 0; padding: 15px; border: 1px solid #e1e7ef; border-radius: 8px; }
+.workspace button { margin-left: 6px; }
+.workspace select { padding: 9px; border: 1px solid #bbc6d2; border-radius: 6px; }
+.error { color: #b42318; }

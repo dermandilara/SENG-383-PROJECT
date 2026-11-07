@@ -5,7 +5,7 @@ Team Hexagon: Samet Coşkun, Derman Dilara Arslan, Emre Güven.
 ## Status and releases
 
 - **v0.0:** React/Vite → Express → SQLite walking skeleton using only synthetic demo tasks. Git tag: `v0.0`.
-- **In progress for v0.1:** M1 login/JWT/role-aware UI; M2–M4 to follow. This branch is not a finished v0.1 release.
+- **In progress for v0.1:** M1 login/JWT/role-aware UI; M2–M4 APIs and simple role-aware screens are being built in the Week 7 sprint. This branch is still a v0.1 candidate requiring review and tests.
 - **Planned v0.2:** M5–M8.
 
 ## Requirements
@@ -57,8 +57,12 @@ After `npm run seed`, all these fictional accounts use password `DemoPass123!`:
 - `POST /api/auth/login`: JWT on valid seeded email/password
 - `GET /api/auth/me`: authenticated account
 - `GET /api/children/:childId`: child access authorization example; 403 if not owned/linked/own account
+- `GET /api/children`: list only children available to the logged-in role
+- `GET/POST/DELETE /api/children/:childId/specialists`: M2 parent link management
+- `GET/POST /api/children/:childId/events`: M3 weekly events
+- `GET/POST /api/children/:childId/tasks`, `PATCH /api/tasks/:taskId/done`: M4 tasks
 
-The real task module (M4), specialist link UI (M2), weekly calendar (M3), observations, documents, statistics and AI summaries are **not implemented yet**.
+M2 specialist link/unlink, M3 weekly events and M4 task assignment/completion have initial working endpoints and basic role-aware screens in the Week 7 development branch. They are **not released until reviewed and merged**. M5–M8 remain unimplemented.
 
 ## Tests
 
@@ -74,7 +78,7 @@ npx playwright install chromium
 npx playwright test
 ```
 
-GitHub Actions workflows are in `.github/workflows/`. All test and PR changes should be reviewed before merge.
+GitHub Actions workflows are in `.github/workflows/`. The Playwright E2E workflow seeds synthetic accounts automatically. All test and PR changes should be reviewed before merge.
 
 ## Documents and Jira
 
