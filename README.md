@@ -35,11 +35,11 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:5173. Try the login page or add a synthetic demo task and refresh to verify SQLite persistence.
+Open http://localhost:5173. Use the synthetic accounts below. To show the Week 8 calendar choose **Week beginning: 2026-11-16** (the app shows a 7-day Monday–Sunday view). Example events and tasks appear after `npm run seed`. The separate v0.0 demo task area is only displayed before login.
 
 ### Synthetic M1 accounts (local learning only)
 
-After `npm run seed`, all these fictional accounts use password `DemoPass123!`:
+After `npm run seed`, all these fictional accounts use password `DemoPass123!` (local coursework only):
 
 | Email | Role | Purpose |
 |---|---|---|
@@ -79,6 +79,10 @@ npx playwright test
 ```
 
 GitHub Actions workflows are in `.github/workflows/`. The Playwright E2E workflow seeds synthetic accounts automatically. All test and PR changes should be reviewed before merge.
+
+### Instructor Week 8 walkthrough
+
+See [docs/WEEK8_DEMO.md](docs/WEEK8_DEMO.md) for the exact demo order, expected outcomes, reset steps, common questions, acceptance checklist and fallback if the demo machine cannot connect. The fixed fictional example event is on 18 November 2026; the seed script is idempotent. A tag/release named `v0.1` must only be published **after** the instructor-demo candidate passes CI and teammate review.
 
 ## Documents and Jira
 

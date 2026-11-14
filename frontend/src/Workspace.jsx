@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { mondayOf } from './weekStart';
+import { mondayOf, shiftWeek, weekDays, localDateKey } from './weekStart';
 
 async function api(path, token, options = {}) {
   const res = await fetch(path, {
@@ -101,7 +101,7 @@ export default function Workspace({ session }) {
   }
 
   return <div className="workspace">
-    <h3>Children available to your role</h3>
+    <h3>{role === 'parent' ? 'My children' : role === 'specialist' ? 'Linked children' : 'My schedule and tasks'}</h3>
     {children.length > 0 ?
       <select aria-label="Select child" value={childId} onChange={e => setChildId(e.target.value)}>
         {children.map(c => <option key={c.id} value={c.id}>{c.displayName}</option>)}
@@ -122,8 +122,27 @@ export default function Workspace({ session }) {
 
     {childId && <section className="subsection">
       <h3>M3 — Weekly schedule</h3>
-      <label>Week beginning <input aria-label="Week beginning" type="date" value={week} onChange={e => setWeek(e.target.value)} /></label>
-      <ul>{events.map(e => <li key={e.id}>{e.title} — {new Date(e.startsAt).toLocaleString()}</li>)}</ul>
+      <div className="week-controls">
+        <button type="button" aria-label="Previous week" onClick={() => setWeek(shiftWeek(week, -1))}>← Previous</button>
+        <label>Week beginning <input aria-label="Week beginning" type="date" value={week} onChange={e => {
+          if (!e.target.value) return;
+          const [year, month, day] = e.target.value.split('-').map(Number);
+          setWeek(mondayOf(new Date(year, month - 1, day)));
+        }} /></label>
+        <button type="button" aria-label="Next week" onClick={() => setWeek(shiftWeek(week, 1))}>Next →</button>
+      </div>
+      <div className="week-grid" aria-label="Seven day weekly schedule">
+        {weekDays(week).map(day => {
+          const dayEvents = events.filter(event => localDateKey(new Date(event.startsAt)) === day.date);
+          return <div className="week-day" key={day.date}>
+            <h4>{day.label}</h4>
+            {dayEvents.length ? <ul>{dayEvents.map(event => <li key={event.id}>
+              <strong>{event.title}</strong>
+              <small>{new Date(event.startsAt).toLocaleTimeString([], { hour:'2-digit', minute:'2-digit' })}</small>
+            </li>)}</ul> : <p className="empty-day">No events</p>}
+          </div>;
+        })}
+      </div>
       {role !== 'child' && <form onSubmit={submitEvent}>
         <input aria-label="Event title" placeholder="Event title" value={eventTitle} onChange={e => setEventTitle(e.target.value)} required />
         <input aria-label="Event start" type="datetime-local" value={startAt} onChange={e => setStartAt(e.target.value)} required />

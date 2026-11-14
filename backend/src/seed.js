@@ -20,5 +20,21 @@ db.prepare('INSERT OR IGNORE INTO children (id, display_name, parent_id, user_id
   .run('Example Child', id('parent@example.test'), id('child@example.test'));
 db.prepare('INSERT OR IGNORE INTO specialist_links (child_id, specialist_id, specialist_type) VALUES (1, ?, ?)')
   .run(id('specialist@example.test'), 'teacher');
-console.log('Synthetic demo tasks and accounts are ready. No real child data is used.');
+// Week 8 instructor walkthrough uses fictional records on a fixed date.
+const sampleEvent = 'Demo: Speech and reading session';
+if (!db.prepare('SELECT 1 FROM events WHERE child_id=1 AND title=?').get(sampleEvent)) {
+  db.prepare('INSERT INTO events(child_id,created_by,title,starts_at,ends_at) VALUES(?,?,?,?,?)')
+    .run(1, id('parent@example.test'), sampleEvent, '2026-11-18T11:00:00.000Z', '2026-11-18T11:45:00.000Z');
+}
+const sampleTasks = [
+  ['Demo: Practice reading', 'Read a fictional short story aloud.', 'Language', '2026-11-17', 1],
+  ['Demo: Draw three shapes', 'Practice drawing circles, squares and triangles.', 'Motor Skills', '2026-11-19', 0]
+];
+for (const [title, description, area, dueDate, done] of sampleTasks) {
+  if (!db.prepare('SELECT 1 FROM tasks WHERE child_id=1 AND title=?').get(title)) {
+    db.prepare('INSERT INTO tasks(child_id,assigned_by,title,description,area,due_date,done,completed_at) VALUES(?,?,?,?,?,?,?,?)')
+      .run(1, id('parent@example.test'), title, description, area, dueDate, done, done ? '2026-11-17T10:00:00.000Z' : null);
+  }
+}
+console.log('Synthetic demo accounts, events and tasks are ready for Week 8. No real child data is used.');
 db.close();

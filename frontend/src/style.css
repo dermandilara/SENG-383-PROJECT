@@ -11,3 +11,17 @@ li { margin: 10px 0; }
 .workspace button { margin-left: 6px; }
 .workspace select { padding: 9px; border: 1px solid #bbc6d2; border-radius: 6px; }
 .error { color: #b42318; }
+
+/* Week 8 instructor demo: one column per day on wide screens. */
+main { max-width: 1100px; margin: 40px auto; }
+.week-controls { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin:12px 0; }
+.week-controls input { min-width:160px; }
+.week-grid { display:grid; grid-template-columns:repeat(7, minmax(0,1fr)); gap:8px; }
+.week-day { min-width:0; padding:10px; border:1px solid #d9e0e8; background:#f8fafc; border-radius:8px; }
+.week-day h4 { margin:0 0 12px; font-size:13px; }
+.week-day ul { padding-left:16px; margin:0; }
+.week-day li { font-size:12px; overflow-wrap:anywhere; }
+.week-day small { display:block; margin-top:5px; color:#4c5a69; }
+.empty-day { font-size:12px; color:#6b7280; }
+@media (max-width:850px) { .week-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:480px) { .week-grid { grid-template-columns:1fr; } main { margin:8px auto; padding:12px; } }
