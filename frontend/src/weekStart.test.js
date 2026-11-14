@@ -5,7 +5,7 @@ test('weekly schedule starts on Monday', () => {
   expect(mondayOf(new Date(2026, 10, 9))).toBe('2026-11-09');
 });
 
-import { shiftWeek, weekDays } from './weekStart';
+import { shiftWeek, weekDays, localDateKey } from './weekStart';
 test('seven day calendar starts on Monday and ends Sunday', () => {
   const days=weekDays('2026-11-16');
   expect(days).toHaveLength(7);
@@ -15,4 +15,8 @@ test('seven day calendar starts on Monday and ends Sunday', () => {
 test('previous/next week navigation', () => {
   expect(shiftWeek('2026-11-16',-1)).toBe('2026-11-09');
   expect(shiftWeek('2026-11-16',1)).toBe('2026-11-23');
+});
+
+test('calendar groups events by browser-local day', () => {
+  expect(localDateKey(new Date(2026, 10, 18, 23, 30))).toBe('2026-11-18');
 });
