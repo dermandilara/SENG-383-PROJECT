@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { mondayOf, shiftWeek, weekDays } from './weekStart';
+import { mondayOf, shiftWeek, weekDays, localDateKey } from './weekStart';
 
 async function api(path, token, options = {}) {
   const res = await fetch(path, {
@@ -133,12 +133,12 @@ export default function Workspace({ session }) {
       </div>
       <div className="week-grid" aria-label="Seven day weekly schedule">
         {weekDays(week).map(day => {
-          const dayEvents = events.filter(event => event.startsAt.slice(0, 10) === day.date);
+          const dayEvents = events.filter(event => localDateKey(new Date(event.startsAt)) === day.date);
           return <div className="week-day" key={day.date}>
             <h4>{day.label}</h4>
             {dayEvents.length ? <ul>{dayEvents.map(event => <li key={event.id}>
               <strong>{event.title}</strong>
-              <small>{new Date(event.startsAt).toLocaleTimeString([], { hour:'2-digit', minute:'2-digit', timeZone:'UTC' })} UTC</small>
+              <small>{new Date(event.startsAt).toLocaleTimeString([], { hour:'2-digit', minute:'2-digit' })}</small>
             </li>)}</ul> : <p className="empty-day">No events</p>}
           </div>;
         })}
